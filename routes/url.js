@@ -3,6 +3,7 @@ const validUrl = require('valid-url');
 const { nanoid } = require('nanoid');
 
 const router = express.Router();
+require('dotenv').config();
 
 // Models
 const Url = require('../models/url');
