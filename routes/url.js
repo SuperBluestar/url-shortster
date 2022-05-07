@@ -19,12 +19,11 @@ router.post('/register', async (req, res) => {
   }
   // body example: {"urlOriginal": "https://www.av.com"}
   const { urlOriginal } = req.body; // destructure the urlOriginal from req.body
-
   let { urlCode } = req.body;
   if (urlCode) {
     if (typeof urlCode === 'string') {
       if (urlCode.length < 4) {
-        return res.status(422).json('urlCode should be longer than 4 letters');
+        return res.status(422).json('UrlCode should be longer than 4 letters');
       }
     } else {
       return res.status(422).json('Type Invalid urlCode');
@@ -36,7 +35,6 @@ router.post('/register', async (req, res) => {
   }
 
   urlCode = urlCode.toLowerCase();
-
   if (validUrl.isUri(urlOriginal)) {
     try {
       let url = await Url.findOne({
@@ -44,7 +42,7 @@ router.post('/register', async (req, res) => {
       });
 
       if (url) {
-        res.json(url);
+        return res.status(409).json(url);
       } else {
         const urlShort = baseUrl + '/' + urlCode;
 
@@ -54,14 +52,14 @@ router.post('/register', async (req, res) => {
           urlCode,
         });
         await url.save();
-        res.json(url);
+        return res.status(201).json(url);
       }
     } catch (err) {
       console.log(err);
-      res.status(500).json('Server Error');
+      return res.status(500).json('Server Error');
     }
   } else {
-    res.status(401).json('Invalid urlOriginal');
+    return res.status(422).json('Invalid urlOriginal');
   }
 });
 
