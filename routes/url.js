@@ -35,6 +35,8 @@ router.post('/register', async (req, res) => {
     urlCode = nanoid(6);
   }
 
+  urlCode = urlCode.toLowerCase();
+
   if (validUrl.isUri(urlOriginal)) {
     try {
       let url = await Url.findOne({
