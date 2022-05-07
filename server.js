@@ -1,25 +1,14 @@
 const express = require('express');
-const app = express();
+const bodyParser = require("body-parser");
 
-require('dotenv').config();
-
-// Mongo Connection
-const connection = require('./config/db.config');
-connection.once('open', () => console.log('DB Connected'));
-connection.on('error', () => console.log('Error'));
-
-app.use(
-  express.json({
-    extended: false,
+const server = express();
+server.use(
+  bodyParser.urlencoded({
+    extended: false
   })
-); //parse data to JSON
+);
+server.use(bodyParser.json()); // parse req.body
 
-app.get('/api-testing', (req, res) => {
-  res.json({
-    success: true,
-    message: "Backend is working"
-  })
-});
+server.use('/api/url', require('./routes/url'));
 
-const PORT = process.env.PORT || 8010;
-app.listen(PORT, console.log(`server started, listening PORT ${PORT}`));
+module.exports = server;
