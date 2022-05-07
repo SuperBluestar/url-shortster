@@ -1,0 +1,66 @@
+const express = require('express');
+const validUrl = require('valid-url');
+const { nanoid } = require('nanoid');
+
+const router = express.Router();
+
+// Models
+const Url = require('../models/url');
+
+// Url Api
+const PORT = process.env.PORT || 8010;
+const SERVER = process.env.SERVER || `http://localhost`;
+
+const baseUrl = `${SERVER}:${PORT}`;
+
+router.post('/register', async (req, res) => {
+  if (!validUrl.isUri(baseUrl)) {
+    return res.status(401).json('Invalid base URL');
+  }
+  // body example: {"urlOriginal": "https://www.av.com"}
+  const { urlOriginal } = req.body; // destructure the urlOriginal from req.body
+
+  let { urlCode } = req.body;
+  if (urlCode) {
+    if (typeof urlCode === 'string') {
+      if (urlCode.length < 4) {
+        return res.status(422).json('urlCode should be longer than 4 letters');
+      }
+    } else {
+      return res.status(422).json('Type Invalid urlCode');
+    }
+  }
+
+  if (!urlCode) {
+    urlCode = nanoid(6);
+  }
+
+  if (validUrl.isUri(urlOriginal)) {
+    try {
+      let url = await Url.findOne({
+        urlOriginal,
+      });
+
+      if (url) {
+        res.json(url);
+      } else {
+        const urlShort = baseUrl + '/' + urlCode;
+
+        url = new Url({
+          urlOriginal,
+          urlShort,
+          urlCode,
+        });
+        await url.save();
+        res.json(url);
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json('Server Error');
+    }
+  } else {
+    res.status(401).json('Invalid urlOriginal');
+  }
+});
+
+module.exports = router;

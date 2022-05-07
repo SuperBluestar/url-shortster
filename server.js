@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require("body-parser");
 
 require('dotenv').config();
 
@@ -9,10 +10,11 @@ connection.once('open', () => console.log('DB Connected'));
 connection.on('error', () => console.log('Error'));
 
 app.use(
-  express.json({
-    extended: false,
+  bodyParser.urlencoded({
+    extended: false
   })
-); //parse data to JSON
+);
+app.use(bodyParser.json()); // parse req.body
 
 app.get('/api-testing', (req, res) => {
   res.json({
@@ -20,6 +22,8 @@ app.get('/api-testing', (req, res) => {
     message: "Backend is working"
   })
 });
+
+app.use('/api/url', require('./routes/url'));
 
 const PORT = process.env.PORT || 8010;
 app.listen(PORT, console.log(`server started, listening PORT ${PORT}`));
