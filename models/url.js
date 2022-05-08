@@ -10,4 +10,9 @@ const URLSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
+URLSchema.post("findOne", async function (doc) {
+  doc.accessCount += 1;
+  await doc.save();
+});
+
 module.exports = mongoose.model('Url', URLSchema);
