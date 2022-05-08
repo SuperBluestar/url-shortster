@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import urlShortster from 'services/urlShortster';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 const HomePage = () => {
   const [originalUrl, setOriginalUrl] = useState<string>('');

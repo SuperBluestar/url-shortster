@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 
 const serverApiBaseUri = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:8000';
