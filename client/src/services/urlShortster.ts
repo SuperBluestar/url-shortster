@@ -9,7 +9,7 @@ export const apiServer = axios.create({
 
 export const axiosErrorHandler = (error: any) => {
   if (axios.isAxiosError(error) && error.response && error.response) {
-    return error.response.data.message;
+    return error.response.data;
   } else {
     return String(error);
   }

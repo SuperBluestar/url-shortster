@@ -12,7 +12,7 @@ const Url = require('../models/url');
 const PORT = process.env.PORT || 8010;
 const SERVER = process.env.SERVER || `http://localhost`;
 
-const baseUrl = `${SERVER}:${PORT}`;
+const baseUrl = `${SERVER}:${PORT}/api`;
 
 router.post('/register', async (req, res) => {
   if (!validUrl.isUri(baseUrl)) {
@@ -43,7 +43,7 @@ router.post('/register', async (req, res) => {
       });
 
       if (url) {
-        return res.status(409).json(url);
+        return res.status(409).json(url.urlCode);
       } else {
         const urlShort = baseUrl + '/' + urlCode;
 
