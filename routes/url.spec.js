@@ -24,6 +24,8 @@ describe('Path: api/url testing', () => {
         urlOriginal: testData.urlOriginal
       });
     expect(res.statusCode).toEqual(201);
+    expect(res.body).toHaveProperty('urlOriginal');
+    expect(res.body).toHaveProperty('urlCode');
     expect(res.body.urlOriginal).toEqual(testData.urlOriginal);
     expect(res.body.urlCode.length).toBe(6);
   });
@@ -40,6 +42,8 @@ describe('Path: api/url testing', () => {
         urlCode: testData.urlCode
       });
     expect(res.statusCode).toEqual(201);
+    expect(res.body).toHaveProperty('urlOriginal');
+    expect(res.body).toHaveProperty('urlCode');
     expect(res.body.urlOriginal).toEqual(testData.urlOriginal);
     expect(res.body.urlCode).toEqual(testData.urlCode);
   });

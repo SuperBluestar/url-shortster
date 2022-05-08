@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 
 const serverApiBaseUri = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:8000';
@@ -36,7 +37,7 @@ export default {
    */
   async registerUrlCode(param: { urlOriginal: string; urlCode?: string }) {
     try {
-      const res = await apiServer.post('/api/url/register', param);
+      await apiServer.post('/api/url/register', param);
       return {
         success: true
       };

@@ -7,6 +7,7 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.1.1
   '@testing-library/user-event': ^13.5.0
+  '@types/axios': ^0.14.0
   '@types/jest': ^27.4.1
   '@types/node': ^16.11.27
   '@types/react': ^18.0.5
@@ -24,6 +25,7 @@ specifiers:
   browserslist: ^4.18.1
   camelcase: ^6.2.1
   case-sensitive-paths-webpack-plugin: ^2.4.0
+  cross-env: ^7.0.3
   css-loader: ^6.5.1
   css-minimizer-webpack-plugin: ^3.2.0
   dotenv: ^10.0.0
@@ -89,6 +91,7 @@ dependencies:
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/react': 13.2.0_ef5jwxihqo6n7gxfmzogljlgcm
   '@testing-library/user-event': 13.5.0
+  '@types/axios': 0.14.0
   '@types/jest': 27.5.0
   '@types/node': 16.11.33
   '@types/react': 18.0.9
@@ -104,6 +107,7 @@ dependencies:
   browserslist: 4.20.3
   camelcase: 6.3.0
   case-sensitive-paths-webpack-plugin: 2.4.0
+  cross-env: 7.0.3
   css-loader: 6.7.1_webpack@5.72.0
   css-minimizer-webpack-plugin: 3.4.1_webpack@5.72.0
   dotenv: 10.0.0
@@ -2265,6 +2269,15 @@ packages:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: false
 
+  /@types/axios/0.14.0:
+    resolution: {integrity: sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=}
+    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
+    dependencies:
+      axios: 0.26.1
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /@types/babel__core/7.1.19:
     resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
     dependencies:
@@ -3698,6 +3711,14 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
+    dev: false
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: false
 
   /cross-spawn/7.0.3:
