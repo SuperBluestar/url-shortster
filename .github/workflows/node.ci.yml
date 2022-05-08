@@ -1,0 +1,28 @@
+name: CI in github action
+
+# Use an array when using more than one event
+# on: [push, pull_request] 
+on: 
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 17.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        cd client
+        cp .env.example .env
+        yarn install && yarn build
+        cd ..
+        cp .env.example .env
+        yarn install && yarn test
