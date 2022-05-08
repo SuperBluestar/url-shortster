@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "cross-env NODE_ENV=production node app.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+    "pretest": "cross-env NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles --forceExit",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000 --forceExit"
   },
   "keywords": [],
   "author": "",
