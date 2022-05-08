@@ -15,3 +15,10 @@ cp .env.example .env
 pnpm install
 pnpm build
 ```
+
+## run
+
+```bash
+pnpm install
+pnpm start
+```
