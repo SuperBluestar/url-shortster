@@ -17,7 +17,9 @@ app.use(
 );
 app.use(bodyParser.json()); // parse req.body
 
-app.use(cors());
+if (process.env.NODE_ENV !== "production") {
+  app.use(cors());
+}
 
 app.get('/api-testing', (req, res) => {
   res.json({
@@ -28,6 +30,15 @@ app.get('/api-testing', (req, res) => {
 
 app.use('/api', require('./routes/redirect'));
 app.use('/api/url', require('./routes/url'));
+
+//Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static('dist/client'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'dist', 'client', 'index.html'));
+    });
+}
 
 const PORT = process.env.PORT || 8010;
 app.listen(PORT, console.log(`server started, listening PORT ${PORT}`));
