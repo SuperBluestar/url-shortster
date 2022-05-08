@@ -22,14 +22,14 @@ describe('Redirect test', () => {
 
   it('request existing shortcode', async () => {
     const res = await request(server)
-      .get('/testcode')
+      .get('/api/testcode')
       .redirects(1);
     expect(res.statusCode).toEqual(200);
   });
   
   it('request non-existing shortcode', async () => {
     const res = await request(server)
-      .get('/random-code');
+      .get('/api/random-code');
     expect(res.statusCode).toEqual(404);
   });
 });
@@ -53,18 +53,18 @@ describe('Url status', () => {
 
   it('request existing shortcode', async () => {
     const res1 = await request(server)
-      .get('/testcode/stats');
+      .get('/api/testcode/stats');
     expect(res1.statusCode).toEqual(200);
     expect(res1.body.accessCount).toEqual(1);
     const res2 = await request(server)
-      .get('/testcode/stats');
+      .get('/api/testcode/stats');
     expect(res2.statusCode).toEqual(200);
     expect(res2.body.accessCount).toEqual(2);
   });
   
   it('request non-existing shortcode', async () => {
     const res = await request(server)
-      .get('/random-code/stats');
+      .get('/api/random-code/stats');
     expect(res.statusCode).toEqual(404);
   });
 })

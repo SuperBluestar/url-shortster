@@ -6,3 +6,12 @@ express, shortster, moving world
 - GET: `/api/<shortcode>/stats`: if shortcode is existing, return the detail of that
 
 - POST: `/api/url/register`: register new shortcode with original url
+
+## frontend build
+
+```bash
+cd client
+cp .env.example .env
+pnpm install
+pnpm build
+```

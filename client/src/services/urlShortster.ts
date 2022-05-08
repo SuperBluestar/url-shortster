@@ -46,5 +46,22 @@ export default {
         message: axiosErrorHandler(err)
       };
     }
+  },
+  /**
+   * register new shortcode
+   */
+  async getShortCodeStats(param: { shortcode: string }) {
+    try {
+      const res = await apiServer.get(`/api/${param.shortcode}/stats`);
+      return {
+        success: true,
+        content: res.data
+      };
+    } catch (err) {
+      return {
+        success: false,
+        message: axiosErrorHandler(err)
+      };
+    }
   }
 };

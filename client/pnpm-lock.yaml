@@ -60,6 +60,7 @@ specifiers:
   react-app-polyfill: ^3.0.0
   react-dev-utils: ^12.0.1
   react-dom: ^18.0.0
+  react-hot-toast: ^2.2.0
   react-redux: ^8.0.1
   react-refresh: ^0.11.0
   react-router: ^6.3.0
@@ -127,6 +128,7 @@ dependencies:
   react-app-polyfill: 3.0.0
   react-dev-utils: 12.0.1_qjw2b2qtwv4tidluoa6ccr7wzi
   react-dom: 18.1.0_react@18.1.0
+  react-hot-toast: 2.2.0_ef5jwxihqo6n7gxfmzogljlgcm
   react-redux: 8.0.1_l7mqxlueokpompik5bjgk5dm4i
   react-refresh: 0.11.0
   react-router: 6.3.0_react@18.1.0
@@ -5185,6 +5187,12 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
 
+  /goober/2.1.9:
+    resolution: {integrity: sha512-PAtnJbrWtHbfpJUIveG5PJIB6Mc9Kd0gimu9wZwPyA+wQUSeOeA4x4Ug16lyaaUUKZ/G6QEH1xunKOuXP1F4Vw==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dev: false
+
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
     dev: false
@@ -8000,6 +8008,20 @@ packages:
 
   /react-error-overlay/6.0.11:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
+    dev: false
+
+  /react-hot-toast/2.2.0_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-248rXw13uhf/6TNDVzagX+y7R8J183rp7MwUMNkcrBRyHj/jWOggfXTGlM8zAOuh701WyVW+eUaWG2LeSufX9g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.9
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /react-is/16.13.1:
