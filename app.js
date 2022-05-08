@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 require('dotenv').config();
 
@@ -15,6 +16,8 @@ app.use(
   })
 );
 app.use(bodyParser.json()); // parse req.body
+
+app.use(cors());
 
 app.get('/api-testing', (req, res) => {
   res.json({
