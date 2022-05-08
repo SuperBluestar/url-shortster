@@ -10,7 +10,7 @@ describe('Redirect test', () => {
     const res = await request(server)
       .post('/api/url/register')
       .send({
-        urlOriginal: 'http://localhost:8000/api-testing',
+        urlOriginal: 'https://github.com',
         urlCode: 'testcode'
       });
   });
@@ -41,7 +41,7 @@ describe('Url status', () => {
     const res = await request(server)
       .post('/api/url/register')
       .send({
-        urlOriginal: 'http://localhost:8000/api-testing',
+        urlOriginal: 'https://github.com',
         urlCode: 'testcode'
       });
   });
