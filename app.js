@@ -23,7 +23,7 @@ app.get('/api-testing', (req, res) => {
   })
 });
 
-app.use('/', require('./routes/redirect'));
+app.use('/api', require('./routes/redirect'));
 app.use('/api/url', require('./routes/url'));
 
 const PORT = process.env.PORT || 8010;
