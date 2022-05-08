@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 require('dotenv').config();
 
@@ -16,6 +17,8 @@ app.use(
 );
 app.use(bodyParser.json()); // parse req.body
 
+app.use(cors());
+
 app.get('/api-testing', (req, res) => {
   res.json({
     success: true,
@@ -23,7 +26,7 @@ app.get('/api-testing', (req, res) => {
   })
 });
 
-app.use('/', require('./routes/redirect'));
+app.use('/api', require('./routes/redirect'));
 app.use('/api/url', require('./routes/url'));
 
 const PORT = process.env.PORT || 8010;
