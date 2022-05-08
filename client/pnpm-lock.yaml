@@ -24,6 +24,7 @@ specifiers:
   browserslist: ^4.18.1
   camelcase: ^6.2.1
   case-sensitive-paths-webpack-plugin: ^2.4.0
+  cross-env: ^7.0.3
   css-loader: ^6.5.1
   css-minimizer-webpack-plugin: ^3.2.0
   dotenv: ^10.0.0
@@ -104,6 +105,7 @@ dependencies:
   browserslist: 4.20.3
   camelcase: 6.3.0
   case-sensitive-paths-webpack-plugin: 2.4.0
+  cross-env: 7.0.3
   css-loader: 6.7.1_webpack@5.72.0
   css-minimizer-webpack-plugin: 3.4.1_webpack@5.72.0
   dotenv: 10.0.0
@@ -3698,6 +3700,14 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
+    dev: false
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: false
 
   /cross-spawn/7.0.3:
