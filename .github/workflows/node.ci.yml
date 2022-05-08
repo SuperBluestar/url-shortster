@@ -22,7 +22,7 @@ jobs:
     - run: |
         cd client
         cp .env.example .env
-        yarn install && yarn build
+        yarn install && yarn lint
         cd ..
         cp .env.example .env
         yarn install && yarn test
