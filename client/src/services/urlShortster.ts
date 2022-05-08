@@ -36,7 +36,7 @@ export default {
    */
   async registerUrlCode(param: { urlOriginal: string; urlCode?: string }) {
     try {
-      const res = await apiServer.post('/api/url/register', param);
+      await apiServer.post('/api/url/register', param);
       return {
         success: true
       };
