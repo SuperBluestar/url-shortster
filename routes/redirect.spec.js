@@ -33,3 +33,38 @@ describe('Redirect test', () => {
     expect(res.statusCode).toEqual(404);
   });
 });
+
+describe('Url status', () => {
+  beforeAll(async () => {
+    mongoServer = await MongoMemoryServer.create();
+    await mongoose.connect(mongoServer.getUri());
+    const res = await request(server)
+      .post('/api/url/register')
+      .send({
+        urlOriginal: 'http://localhost:8000/api-testing',
+        urlCode: 'testcode'
+      });
+  });
+
+  afterAll(async () => {
+    await mongoose.disconnect();
+    await mongoose.connection.close();
+  });
+
+  it('request existing shortcode', async () => {
+    const res1 = await request(server)
+      .get('/testcode/stats');
+    expect(res1.statusCode).toEqual(200);
+    expect(res1.body.accessCount).toEqual(1);
+    const res2 = await request(server)
+      .get('/testcode/stats');
+    expect(res2.statusCode).toEqual(200);
+    expect(res2.body.accessCount).toEqual(2);
+  });
+  
+  it('request non-existing shortcode', async () => {
+    const res = await request(server)
+      .get('/random-code/stats');
+    expect(res.statusCode).toEqual(404);
+  });
+})
